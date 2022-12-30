@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact-us', [ContactUsController::class, 'showForm']);
+Route::post('/contact-us', [ContactUsController::class, 'sendEmailToAdmin'])->name('contactUs.sendEmail');
