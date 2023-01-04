@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 Route::get('/contact-us', [ContactUsController::class, 'showForm']);
 Route::post('/contact-us', [ContactUsController::class, 'sendEmailToAdmin'])->name('contactUs.sendEmail');
+
+Route::get('search', [SearchController::class, 'showForm']);
