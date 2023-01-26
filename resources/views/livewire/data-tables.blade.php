@@ -1,4 +1,4 @@
-<div class="m-50 container px-10">
+<div class="container max-w-7xl mx-auto px-10">
     <h2 class="text-lg font-semibold mt-4">Livewire Data Tables</h2>
     <div class="flex flex-col mt-8">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -14,7 +14,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input id="search"
+                            <input id="search" wire:model="search"
                                 class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:shadow-outline-blue sm:text-sm transition duration-150 ease-in-out"
                                 placeholder="Search" type="search">
                         </div>
@@ -35,13 +35,19 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>
-                                <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Name
+                                <th class="bg-gray-50">
+                                    <button wire:click="sortBy('name')"
+                                        class="px-6 py-3 w-full text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        Name
+                                        <x-sort-icon field="name" :sortField="$sortField" :sortAsc="$sortAsc" />
+                                    </button>
                                 </th>
-                                <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Email
+                                <th class="bg-gray-50">
+                                    <button wire:click="sortBy('email')"
+                                        class="px-6 py-3 w-full text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        Email
+                                        <x-sort-icon field="email" :sortField="$sortField" :sortAsc="$sortAsc" />
+                                    </button>
                                 </th>
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
