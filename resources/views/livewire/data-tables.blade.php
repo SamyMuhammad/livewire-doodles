@@ -57,7 +57,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($users as $user)
+                            @forelse ($users as $user)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap">
                                     <div class="flex items-center">
@@ -96,7 +96,13 @@
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 </td>
                             </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="4" class="px-6 py-4 whitespace-no-wrap text-lg text-center leading-5 text-gray-900">
+                                    No Data...
+                                </td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
