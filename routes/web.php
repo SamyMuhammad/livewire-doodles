@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 
@@ -25,3 +26,6 @@ Route::post('/contact-us', [ContactUsController::class, 'sendEmailToAdmin'])->na
 
 Route::get('search', [SearchController::class, 'showForm']);
 Route::get('users', [UserController::class, 'index']);
+
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::post('/post/{post}/comment', [PostController::class, 'addComment'])->name('comment.store');
