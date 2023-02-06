@@ -56,9 +56,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('post.edit', ['post' => $post]);
     }
 
     /**
@@ -68,9 +68,23 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->validate([
+            'title' => ['required', 'string', 'min:4', 'max:255'],
+            'content' => ['required', 'string', 'min:4'],
+            'photo' => ['nullable', 'image', 'max:5120'],
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = 'storage/'.$request->file('photo')->store('uploads/posts', 'public');
+        } else {
+            unset($data['photo']);
+        }
+        
+        $post->update($data);
+
+        return redirect()->route('post.show', $post)->with('post_updated', 'Post was updated!');
     }
 
     /**

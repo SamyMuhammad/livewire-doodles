@@ -28,4 +28,6 @@ Route::get('search', [SearchController::class, 'showForm']);
 Route::get('users', [UserController::class, 'index']);
 
 Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::patch('/post/{post}', [PostController::class, 'update'])->name('post.update');
 Route::post('/post/{post}/comment', [PostController::class, 'addComment'])->name('comment.store');
