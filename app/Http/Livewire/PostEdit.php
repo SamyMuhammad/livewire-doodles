@@ -13,6 +13,7 @@ class PostEdit extends Component
     public $title;
     public $content;
     public $photo;
+    public $tempUrl;
     protected $rules = [
         'title' => ['required', 'string', 'min:4', 'max:255'],
         'content' => ['required', 'string', 'min:4'],
@@ -28,6 +29,11 @@ class PostEdit extends Component
 
     public function updatedPhoto()
     {
+        try {
+            $this->tempUrl = $this->photo->temporaryUrl();
+        } catch (\Throwable $th) {
+            $this->tempUrl = '';
+        }
         $this->validate();
     }
 

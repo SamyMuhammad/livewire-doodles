@@ -68,7 +68,7 @@
                 <p class="text-red-500 mt-1 text-sm">{{ $message }}</p>
                 @enderror
                 @if ($photo)
-                    <img class="w-40 inline-block ml-5 rounded-md float-right" src="{{ $photo->temporaryUrl() }}" alt="temp">
+                    <img class="w-40 inline-block ml-5 rounded-md float-right" src="{{ $tempUrl }}" alt="temp">
                 @else
                     <img class="w-40 inline-block ml-5 rounded-md float-right" src="{{ asset($post->photo) }}" alt="photo">
                 @endif
