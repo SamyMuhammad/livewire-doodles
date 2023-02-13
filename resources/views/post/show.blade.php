@@ -34,7 +34,7 @@
             </div>
         </div>
         @if ($post->photo)
-        <div class="mt-4">
+        <div class="mt-4 w-4/5">
             <img src="{{ asset($post->photo) }}" alt="cover photo">
         </div>
         @endif
